@@ -1,0 +1,38 @@
+
+<html>
+    <body>
+      
+      <script src="https://cdn.jsdelivr.net/npm/yjs@12/dist/y.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/y-array@10/dist/y-array.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/y-websockets-client@8/dist/y-websockets-client.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/y-memory@8/dist/y-memory.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/y-map@10/dist/y-map.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/y-text@9/dist/y-text.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/y-webrtc@8.0.7/dist/y-webrtc.js"></script>
+
+<script>
+  Y({
+    db: {
+      name: 'memory' // use memory database adapter.
+      // name: 'indexeddb' // use indexeddb database adapter instead for offline apps
+    },
+    connector: {
+      name: 'webrtc', // use webrtc connector
+      // name: 'websockets-client'
+      // name: 'xmpp'
+      room: 'my-room' // clients connecting to the same room share data 
+    },
+    share: {
+      textarea: 'Text' // y.share.textarea is of type y-text
+    }
+  }).then(function (y) {
+    // The Yjs instance `y` is available
+    // y.share.* contains the shared types
+
+    // Bind `y.share.textarea` to `<textarea/>`
+    y.share.textarea.bind(document.querySelector('textarea'))
+  });
+</script>
+      <textarea></textarea>
+    </body>
+  </html>
